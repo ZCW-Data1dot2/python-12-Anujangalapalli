@@ -7,42 +7,39 @@ class Parity(enum.Enum):
     EVEN = 1
 
 
-def gen_list(start: int, stop: int, parity: Parity) -> List[int]:
+def gen_list(start: int, stop: int, parity: Parity) -> list:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
-
+      Generate a list
+      
     :param start:
     :param stop:
     :param parity:
     :return:
     """
-    pass
+    if parity == Parity.EVEN:
+        return [val for val in range(start, stop) if val % 2 == 0]
+    else:
+        return [val for val in range(start, stop) if val % 2 != 0]
 
 
 def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
-
+     Generate a dictionary
 
     :param start:
     :param stop:
     :param strategy:
     :return:
     """
-    pass
+    return {i: strategy(i) for i in range(start, stop)}
 
 
 def gen_set(val_in: str) -> Set:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
+    Generate a set
 
     :param val_in:
     :return:
     """
-    pass
+
+    return set(char for char in val_in.swapcase() if char.isupper())
